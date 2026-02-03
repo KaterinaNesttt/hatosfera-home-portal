@@ -14,8 +14,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      content: "info@xatosfera.ua",
-      link: "mailto:info@xatosfera.ua",
+      content: "ksenia.bondarenko@email.ua",
+      link: "mailto:ksenia.bondarenko@email.ua",
     },
     {
       icon: MapPin,
@@ -40,10 +40,10 @@ const Contact = () => {
             Контакти
           </span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-3 mb-4">
-            Зв'яжіться з нами
+            Зв'яжіться зі мною
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Готові відповісти на ваші запитання та допомогти знайти ідеальний варіант
+            Готова відповісти на ваші запитання та допомогти знайти ідеальний варіант
           </p>
         </div>
 
@@ -51,7 +51,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div>
             <h3 className="font-serif text-2xl text-foreground mb-8">
-              Наші контакти
+              Мої контакти
             </h3>
             
             <div className="grid sm:grid-cols-2 gap-6 mb-10">

@@ -27,7 +27,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm text-primary-foreground px-4 py-2 rounded-full mb-6 animate-fade-in">
             <span className="w-2 h-2 bg-primary-foreground rounded-full animate-pulse" />
-            <span className="text-sm font-medium">Агенція нерухомості №1 у вашому регіоні</span>
+            <span className="text-sm font-medium">Ваш персональний агент з нерухомості</span>
           </div>
 
           {/* Heading */}
@@ -39,7 +39,7 @@ const Hero = () => {
           {/* Description */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-lg animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Професійний підхід до пошуку нерухомості. 
-            Довіртеся експертам з багаторічним досвідом.
+            Довіртеся експерту з багаторічним досвідом.
           </p>
 
           {/* CTA Buttons */}
