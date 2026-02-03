@@ -57,6 +57,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Кастомні кольори Хатосфера
+        steel: {
+          DEFAULT: "hsl(var(--steel))",
+          light: "hsl(var(--steel-light))",
+          dark: "hsl(var(--steel-dark))",
+        },
+        cream: "hsl(var(--cream))",
+        "warm-white": "hsl(var(--warm-white))",
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
