@@ -24,30 +24,18 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <svg 
-                  viewBox="0 0 40 40" 
-                  fill="none" 
-                  className="w-8 h-8"
-                >
-                  <path 
-                    d="M20 4L4 16V36H16V24H24V36H36V16L20 4Z" 
-                    stroke="white" 
-                    strokeWidth="2.5" 
-                    fill="none"
-                  />
-                  <rect x="17" y="12" width="6" height="6" stroke="white" strokeWidth="2" fill="none" />
-                </svg>
+                <span className="text-primary-foreground font-serif text-xl font-bold">КБ</span>
               </div>
               <div>
-                <span className="font-serif text-xl font-semibold block">ХАТОСФЕРА</span>
+                <span className="font-serif text-xl font-semibold block">Ксенія Бондаренко</span>
                 <span className="text-xs text-primary-foreground/60 tracking-widest uppercase">
-                  Агенція нерухомості
+                  Агент з нерухомості
                 </span>
               </div>
             </a>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
-              Професійна агенція нерухомості з багаторічним досвідом. 
-              Допомагаємо знаходити ідеальне житло для кожного клієнта.
+              Професійний агент з нерухомості з багаторічним досвідом. 
+              Допомагаю знаходити ідеальне житло для кожного клієнта.
             </p>
             
             {/* Social */}
@@ -121,9 +109,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@xatosfera.ua" className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a href="mailto:ksenia.bondarenko@email.ua" className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span>info@xatosfera.ua</span>
+                  <span>ksenia.bondarenko@email.ua</span>
                 </a>
               </li>
               <li>
@@ -141,7 +129,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="section-container py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/50 text-sm">
-            © 2024 ХАТОСФЕРА. Всі права захищені.
+            © 2024 Ксенія Бондаренко. Всі права захищені.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors">

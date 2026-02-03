@@ -19,26 +19,14 @@ const Header = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
             <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-lg flex items-center justify-center">
-              <svg 
-                viewBox="0 0 40 40" 
-                fill="none" 
-                className="w-6 h-6 md:w-8 md:h-8"
-              >
-                <path 
-                  d="M20 4L4 16V36H16V24H24V36H36V16L20 4Z" 
-                  stroke="white" 
-                  strokeWidth="2.5" 
-                  fill="none"
-                />
-                <rect x="17" y="12" width="6" height="6" stroke="white" strokeWidth="2" fill="none" />
-              </svg>
+              <span className="text-primary-foreground font-serif text-lg md:text-xl font-bold">КБ</span>
             </div>
             <div className="hidden sm:block">
               <span className="font-serif text-xl md:text-2xl font-semibold text-foreground tracking-tight">
-                ХАТОСФЕРА
+                Ксенія Бондаренко
               </span>
               <span className="block text-xs text-muted-foreground tracking-widest uppercase">
-                Агенція нерухомості
+                Агент з нерухомості
               </span>
             </div>
           </a>

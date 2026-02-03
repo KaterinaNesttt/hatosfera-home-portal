@@ -16,14 +16,14 @@ const About = () => {
     {
       icon: Heart,
       title: "Індивідуальний підхід",
-      description: "Враховуємо всі побажання та потреби клієнтів",
+      description: "Враховую всі побажання та потреби клієнтів",
     },
   ];
 
   const achievements = [
     "Понад 1200 успішних угод",
     "Власна база перевірених об'єктів",
-    "Команда ліцензованих ріелторів",
+    "Ліцензований ріелтор",
     "Безкоштовна оцінка нерухомості",
   ];
 
@@ -33,13 +33,13 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-medium uppercase tracking-widest text-sm">
-            Про нас
+            Про мене
           </span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mt-3 mb-4">
-            Агенція, якій довіряють
+            Агент, якому довіряють
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            ХАТОСФЕРА — це команда професіоналів, яка допомагає знаходити ідеальні рішення для вашого комфорту
+            Ксенія Бондаренко — професіонал, який допомагає знаходити ідеальні рішення для вашого комфорту
           </p>
         </div>
 
@@ -49,15 +49,15 @@ const About = () => {
             <div className="relative bg-card rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={ownerImage}
-                alt="Засновниця агенції"
+                alt="Ксенія Бондаренко - агент з нерухомості"
                 className="w-full h-[500px] object-cover object-top"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/90 to-transparent p-8">
                 <h3 className="font-serif text-2xl text-primary-foreground mb-1">
-                  Олена Петренко
+                  Ксенія Бондаренко
                 </h3>
                 <p className="text-primary-foreground/80">
-                  Засновниця та керівник агенції
+                  Агент з нерухомості
                 </p>
               </div>
             </div>
@@ -73,9 +73,9 @@ const About = () => {
             </h3>
             
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              ХАТОСФЕРА була заснована у 2009 році з метою створити агенцію нерухомості нового формату. 
-              Наша місія — зробити процес купівлі, продажу та оренди нерухомості максимально простим, 
-              прозорим та комфортним для кожного клієнта.
+              Я працюю на ринку нерухомості з 2009 року і моя місія — зробити процес купівлі, 
+              продажу та оренди нерухомості максимально простим, прозорим та комфортним 
+              для кожного клієнта.
             </p>
 
             {/* Features */}
