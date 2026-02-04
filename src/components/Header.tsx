@@ -79,9 +79,9 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <a href="tel:+380123456789" className="flex items-center gap-2 text-muted-foreground py-2">
+              <a href="tel:+380502155397" className="flex items-center gap-2 text-muted-foreground py-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-sm font-medium">+380 12 345 6789</span>
+                <span className="text-sm font-medium">+380 50 215 5397</span>
               </a>
               <Button className="btn-primary w-full mt-2">
                 Консультація

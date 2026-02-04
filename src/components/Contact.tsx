@@ -77,15 +77,15 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Map placeholder */}
-            <div className="relative h-64 bg-secondary rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 mx-auto mb-3 text-primary/50" />
-                  <p>Інтерактивна карта</p>
-                </div>
-              </div>
-            </div>
+               {/* Map placeholder */}
+<div className="relative h-64 bg-secondary rounded-2xl overflow-hidden">
+  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+    <div className="text-center">
+      <MapPin className="w-12 h-12 mx-auto mb-3 text-primary/50" />
+    </div>
+  </div>
+</div>
+
           </div>
 
           {/* Contact Form */}

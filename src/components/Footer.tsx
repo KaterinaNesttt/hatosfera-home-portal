@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-serif text-xl font-bold">КБ</span>
+                <span className="text-primary-foreground font-serif text-xl font-bold">ХСФ</span>
               </div>
               <div>
                 <span className="font-serif text-xl font-semibold block">Ксенія Бондаренко</span>
@@ -105,7 +105,7 @@ const Footer = () => {
               <li>
                 <a href="tel:+380123456789" className="flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
                   <Phone className="w-5 h-5 text-primary" />
-                  <span>+380 12 345 6789</span>
+                  <span>+380 50 215 5397</span>
                 </a>
               </li>
               <li>
@@ -117,7 +117,7 @@ const Footer = () => {
               <li>
                 <div className="flex items-start gap-3 text-primary-foreground/70">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span>м. Київ, вул. Хрещатик, 1</span>
+                  <span>м. Кропивницький, вул. Островського 15</span>
                 </div>
               </li>
             </ul>
@@ -129,7 +129,7 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="section-container py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/50 text-sm">
-            © 2024 Ксенія Бондаренко. Всі права захищені.
+            © 2026 Ксенія Бондаренко. Всі права захищені.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors">

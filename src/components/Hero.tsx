@@ -4,9 +4,9 @@ import heroImage from "@/assets/hero-building.jpg";
 
 const Hero = () => {
   const stats = [
-    { icon: Home, value: "500+", label: "Об'єктів" },
-    { icon: Users, value: "1200+", label: "Клієнтів" },
-    { icon: MapPin, value: "15+", label: "Років досвіду" },
+    { icon: Home, value: "150+", label: "Об'єктів" },
+    { icon: Users, value: "500+", label: "Клієнтів" },
+    { icon: MapPin, value: "6+", label: "Років досвіду" },
   ];
 
   return (
@@ -45,12 +45,10 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button size="lg" className="bg-primary hover:bg-steel-dark text-primary-foreground px-8 py-6 text-lg font-medium rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl">
-              Переглянути об'єкти
+              Безкоштовна консультація
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg font-medium rounded-lg backdrop-blur-sm">
-              Безкоштовна консультація
-            </Button>
+          
           </div>
 
           {/* Stats */}
