@@ -77,14 +77,19 @@ const Contact = () => {
               ))}
             </div>
 
-               {/* Map placeholder */}
-<div className="relative h-64 bg-secondary rounded-2xl overflow-hidden">
-  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-    <div className="text-center">
-      <MapPin className="w-12 h-12 mx-auto mb-3 text-primary/50" />
-    </div>
-  </div>
+               {/* Google Map */}
+<div className="relative h-64 rounded-2xl overflow-hidden">
+  <iframe
+    src="https://www.google.com/maps?q=Кропивницький&output=embed"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    className="w-full h-full"
+  />
 </div>
+
 
           </div>
 

@@ -23,13 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: lts/*
-          cache: 'npm'
+          bun-version: latest
 
-      - run: npm ci
-      - run: npm run build
+      - run: bun install
+      - run: bun run build
 
       - uses: actions/configure-pages@v5
 
