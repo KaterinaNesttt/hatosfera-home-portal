@@ -6,6 +6,8 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { useState } from "react";
 
+const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL || "https://ksbondarenko-blog-api.roman-v-shkurenko.workers.dev/api/contact";
+
 const Contact = () => {
   const [formState, setFormState] = useState({
     name: "",
@@ -17,6 +19,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const contactInfo = [
     {
@@ -61,20 +64,35 @@ const Contact = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError("");
     const newErrors = validate();
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
     setIsSubmitting(true);
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || data?.ok === false) {
+        throw new Error(data?.error || "Contact form submission failed");
+      }
+
       setIsSubmitted(true);
       setFormState({ name: "", phone: "", email: "", type: "", message: "" });
       setTimeout(() => setIsSubmitted(false), 5000);
-    }, 800);
+    } catch (error) {
+      console.error("Failed to submit contact form:", error);
+      setSubmitError("Не вдалося надіслати запит. Спробуйте ще раз або зателефонуйте.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -88,6 +106,9 @@ const Contact = () => {
         delete next[name];
         return next;
       });
+    }
+    if (submitError) {
+      setSubmitError("");
     }
   };
 
@@ -213,6 +234,12 @@ const Contact = () => {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 Дякую! Ваш запит надіслано. Я зв'яжуся з вами найближчим часом.
+              </div>
+            )}
+
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-sm font-medium" role="alert">
+                {submitError}
               </div>
             )}
 

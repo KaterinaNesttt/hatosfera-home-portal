@@ -13,7 +13,31 @@
 
 export interface Env {
   DB: D1Database;
+  TELEGRAM_BOT_TOKEN: string;
+  TELEGRAM_CHAT_ID: string;
+  SITE_URL: string;
 }
+
+type ContactPayload = {
+  name?: unknown;
+  phone?: unknown;
+  email?: unknown;
+  type?: unknown;
+  message?: unknown;
+};
+
+type TelegramResponse = {
+  ok?: boolean;
+  description?: string;
+};
+
+type ContactMessage = {
+  name: string;
+  phone: string;
+  email: string;
+  type: string;
+  message: string;
+};
 
 // CORS headers
 const corsHeaders = {
@@ -39,6 +63,108 @@ function errorResponse(message: string, status = 400) {
     status,
     headers: corsHeaders,
   });
+}
+
+const contactTypeLabels: Record<string, string> = {
+  buy: 'Хочу купити',
+  sell: 'Хочу продати',
+  rent: 'Хочу орендувати',
+  consult: 'Консультація',
+};
+
+function getContactCorsHeaders(env: Env) {
+  return {
+    'Access-Control-Allow-Origin': env.SITE_URL || 'https://ksgenadivna.pp.ua',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400',
+    'Content-Type': 'application/json; charset=utf-8',
+  };
+}
+
+function handleContactOptions(env: Env) {
+  return new Response(null, {
+    headers: getContactCorsHeaders(env),
+  });
+}
+
+function contactResponse(body: Record<string, unknown>, status: number, env: Env) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: getContactCorsHeaders(env),
+  });
+}
+
+function contactErrorResponse(message: string, status: number, env: Env) {
+  return contactResponse({ ok: false, error: message }, status, env);
+}
+
+function textValue(value: unknown) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function formatContactMessage(payload: ContactMessage) {
+  const type = contactTypeLabels[payload.type] || payload.type || 'Не вказано';
+  const lines = [
+    'Нова заявка з сайту',
+    '',
+    `Ім'я: ${payload.name}`,
+    `Телефон: ${payload.phone}`,
+    `Email: ${payload.email || 'Не вказано'}`,
+    `Тип запиту: ${type}`,
+    `Повідомлення: ${payload.message || 'Не вказано'}`,
+    '',
+    `Час: ${new Date().toISOString()}`,
+  ];
+
+  return lines.join('\n').slice(0, 4096);
+}
+
+async function handleContactRequest(request: Request, env: Env) {
+  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
+    return contactErrorResponse('Telegram is not configured', 502, env);
+  }
+
+  let payload: ContactPayload;
+  try {
+    payload = await request.json();
+  } catch {
+    return contactErrorResponse('Invalid JSON', 400, env);
+  }
+
+  const contactPayload = {
+    name: textValue(payload.name),
+    phone: textValue(payload.phone),
+    email: textValue(payload.email),
+    type: textValue(payload.type),
+    message: textValue(payload.message),
+  };
+
+  if (!contactPayload.name || !contactPayload.phone) {
+    return contactErrorResponse('Name and phone are required', 400, env);
+  }
+
+  try {
+    const telegramResponse = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text: formatContactMessage(contactPayload),
+      }),
+    });
+    const telegramData = await telegramResponse.json().catch(() => ({})) as TelegramResponse;
+
+    if (!telegramResponse.ok || telegramData.ok === false) {
+      console.error('Telegram API error:', telegramData.description || telegramResponse.statusText);
+      return contactErrorResponse('Telegram delivery failed', 502, env);
+    }
+  } catch (error) {
+    console.error('Telegram request failed:', error);
+    return contactErrorResponse('Telegram delivery failed', 502, env);
+  }
+
+  return contactResponse({ ok: true }, 200, env);
 }
 
 // GET /api/articles — список опублікованих статей
@@ -142,18 +268,28 @@ async function getArticleBySlug(slug: string, db: D1Database) {
 // Головний обробник
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    const path = url.pathname;
+
     // CORS preflight
     if (request.method === 'OPTIONS') {
+      if (path === '/api/contact') {
+        return handleContactOptions(env);
+      }
       return handleOptions();
+    }
+
+    if (path === '/api/contact') {
+      if (request.method !== 'POST') {
+        return contactErrorResponse('Method not allowed', 405, env);
+      }
+      return handleContactRequest(request, env);
     }
 
     // Тільки GET
     if (request.method !== 'GET') {
       return errorResponse('Method not allowed', 405);
     }
-
-    const url = new URL(request.url);
-    const path = url.pathname;
 
     try {
       // Маршрутизація

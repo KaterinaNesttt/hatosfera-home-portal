@@ -1,6 +1,6 @@
 name = "ksbondarenko-blog-api"
 main = "worker/index.ts"
-compatibility_date = "2024-01-01"
+compatibility_date = "2026-07-02"
 
 # D1 Database binding
 [[d1_databases]]
@@ -20,3 +20,4 @@ SITE_URL = "https://ksgenadivna.pp.ua"
 # Налаштування логування
 [observability]
 enabled = true
+head_sampling_rate = 1
